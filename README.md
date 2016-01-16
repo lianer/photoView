@@ -1,5 +1,5 @@
 # photoView
- - 灵感来自于picasa，原生js实现。
+  灵感来自于picasa，原生js实现。
 
 ## 介绍
   > 追求美是人的天性
@@ -13,9 +13,6 @@
     为了保证整体的清洁，界面没有使用任何图标，有需要的可以自行修改css。
 
   [戳我看demo](//jsfiddle.net/Lianer/ycufgx97/embedded/result,html,css,js/)
-
-## 效果
-  ![](http://images.cnblogs.com/cnblogs_com/lianer/708083/o_%e6%90%9c%e7%8b%97%e6%88%aa%e5%9b%be20150705161946.png)
 
 ## 日志
   2016.01.16 修正一处js拼写错误
