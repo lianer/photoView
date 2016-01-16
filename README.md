@@ -1,8 +1,5 @@
 # photoView
-一个借鉴google picasa设计的图片查看器，原生js实现。
-
-# photoView
- - 灵感来自于picasa
+ - 灵感来自于picasa，原生js实现。
 
 ## 介绍
   > 追求美是人的天性
