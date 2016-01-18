@@ -1,7 +1,7 @@
 /**
  * 照片浏览
  * --
- * @author 楼云龙
+ * @author Lianer
  * @version 2015.06.11
  * @description 带有常用照片查看功能，包括缩放、自适应、移动、切换、旋转、下载，ie9+
  * @example
