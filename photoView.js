@@ -1,7 +1,7 @@
 /**
  * 照片浏览
  * --
- * @author Lianer
+ * @author 楼云龙
  * @version 2015.06.11
  * @description 带有常用照片查看功能，包括缩放、自适应、移动、切换、旋转、下载，ie9+
  * @example
@@ -180,6 +180,8 @@
                 view.style.left = target.left + "px";
                 view.style.top = target.top + "px";
                 view.style.transform = "rotate(" + target.rotate + "deg)";
+                view.style.webkitTransform = "rotate(" + target.rotate + "deg)";
+                // view.style.msTransform="rotate(" + target.rotate + "deg)";
             },
             // 追加列表
             add: function() {
@@ -203,9 +205,7 @@
 
                 function checkType(mixed) {
                     if (typeof mixed === "string") {
-                        var img = document.createElement("img");
-                        img.src = mixed;
-                        add(img, null, null);
+                        add(mixed, null, null);
                     } else if (mixed.nodeName && mixed.nodeName.toLowerCase() === "img") {
                         add(mixed.getAttribute("data-source") || mixed.src,
                             mixed.getAttribute("data-rotate") || null,
@@ -473,43 +473,4 @@
         pv.size = 0;
         return pv;
     }();
-
 })();
-
-
-
-// 实例
-var list = document.querySelector("#list");
-var pv = new PhotoView(); // 初始化PhotoView，生成DOM元素
-
-pv.add(list.children); // 将元素添加到PhotoView
-
-list.onclick = function(e) {
-    e = window.event || e;
-    var target = e.srcElement || e.target;
-
-    // 事件委托
-    if (target.nodeName === "IMG") {
-        pv.show(); // 显示PhotoView
-    }
-
-    var index = getIndex(target);
-    pv.aim(index); // 定位到某个图片
-};
-
-list.children[0].click();
-
-/**
- * 获取当前元素在兄弟元素中的index
- * @param  {dom} elem 目标元素
- * @return {number}   index
- */
-function getIndex(elem) {
-    if (elem.sourceIndex) {
-        return elem.sourceIndex - elem.parentNode.sourceIndex;
-    } else {
-        var i = 0;
-        while (elem = elem.previousElementSibling) i++;
-        return i;
-    }
-}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片浏览</title>
+    <style>
+    .list img {
+        float: left;
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: 2px;
+    }
+    </style>
+</head>
+<body>
+    <div id="list" class="list">
+        <img src="./img/1.jpg" alt="">
+        <img src="./img/2.jpg" alt="">
+        <img src="./img/3.jpg" alt="">
+        <img src="./img/4.jpg" alt="">
+    </div>
+
+    <link rel="stylesheet" href="../photoView.css">
+    <script src="../photoview.js"></script>
+    <script>
+        var pv = new PhotoView(), // 初始化PhotoView，生成DOM元素
+            list = document.querySelector("#list");
+
+        pv.add(list.children); // 将元素添加到PhotoView
+        
+        list.onclick = function(e) {
+            e = window.event || e;
+            var target = e.srcElement || e.target;
+            // 事件委托
+            if (target.nodeName === "IMG") {
+                pv.show(); // 显示PhotoView
+            }
+            var index = getIndex(target);
+            pv.aim(index); // 定位到某个图片
+        };
+        list.children[0].click();
+
+        /**
+         * 获取当前元素在兄弟元素中的index
+         * @param  {dom} elem 目标元素
+         * @return {number}   index
+         */
+        function getIndex(elem) {
+            if (elem.sourceIndex) {
+                return elem.sourceIndex - elem.parentNode.sourceIndex;
+            } else {
+                var i = 0;
+                while (elem = elem.previousElementSibling) i++;
+                return i;
+            }
+        }
+    </script>
+</body>
+
+</html>
