@@ -32,7 +32,7 @@ var pv = new PhotoView();
 // 将元素添加到PhotoView
 pv.add(list.children);
 
-// 
+// 捕获小图的点击事件
 list.onclick = function(e) {
     e = window.event || e;
     var target = e.srcElement || e.target;
